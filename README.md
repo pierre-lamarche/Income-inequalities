@@ -1,2 +1,2 @@
 # Income-inequalities
-Visualise income inequalities in Europe, as a derivate from (https://github.com/jgaffuri/EurostatVisu)[Julien Gaffuri's EurostatVisu].
+Visualise income inequalities in Europe, as a derivate from (Julien Gaffuri's EurostatVisu)[https://github.com/jgaffuri/EurostatVisu].
