@@ -98,15 +98,23 @@
         <div id="timeslider"></div>
     </div>
     <div id="info" style="width: 240px; margin-top: 25px;"></div>
+    <span id="typeChart"></span>
+    <div id=typeList>
+    	<select name="typeN" id="typeN" style="display: none;">
+    		<optgroup label="Statistics on shares">
+    			<option value="Share_dec">Share of deciles</option>
+    			<option value="Share-acc">Share of deciles/percentiles (as accurate as possible)</option>
+    		</optgroup>
+    	</select>
+    </div>
 </div>
 <div id="chart"></div>
 
-/**
-<div>
+<!-- <div>
     <p><a id="linkdist2" href="income_distr_2.html"><span id="focusCntr"></span></a></p>
     <p><span id="sourceTxt"></span></p>
 </div>
-*/
+-->
 <script>
 
     /**
@@ -206,9 +214,9 @@
             var timeSel = EstLib.getParameterByName("time") || "2014";
 
             //link to other visualisation
-            d3.select("#linkdist2")
+ /*           d3.select("#linkdist2")
                     .on("click", function() { window.open("income_distr_2.html?"+"time="+timeSel+"&lang="+lg, "_blank"); });
-
+*/
             $.when(
                     //get income distribution data
                     $.ajax({url:EstLib.getEstatDataURL("ilc_di01",{currency:"EUR",indic_il:"SHARE",
