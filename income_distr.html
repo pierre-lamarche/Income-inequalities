@@ -97,24 +97,11 @@
         <span id="yearText"></span>
         <div id="timeslider"></div>
     </div>
-    <div id="info" style="width: 350px; margin-top: 25px;"></div>
     <span id="typeChart"></span>
-    <div id=typeList>
-    	<select name="typeN" id="typeN" style="display: none;">
-    		<optgroup label="Statistics on shares">
-    			<option value="Share_dec" selected="selected">Share of deciles</option>
-    			<option value="Share_acc" selected="selected">Share of deciles/percentiles (as accurate as possible)</option>
-    		</optgroup>
-    	</select>
-		<span tabindex="0" id="geoList-button" role="combobox" aria-expanded="false" aria-autocomplete="list" 
-		aria-owns="geoList-menu" aria-haspopup="true" 
-		class="ui-selectmenu-button ui-selectmenu-button-closed ui-corner-all ui-button ui-widget" 
-		style="width: auto;">
-			<span class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s">
-			</span>
-			<span class="ui-selectmenu-text">Share of deciles/percentiles (as accurate as possible)
-			</span>
-		</span>
+    <div id=typeListDiv>
+    	<select name="typeN" id="typeList" </select>
+    </div>
+    <div id="info" style="width: 350px; margin-top: 25px;">
     </div>
 </div>
 <div id="chart"></div>
@@ -221,6 +208,7 @@
             //the selection
             var geoSel = EstLib.getParameterByName("geo") || "EU28";
             var timeSel = EstLib.getParameterByName("time") || "2014";
+            var typeSel = "1";
 
             //link to other visualisation
  /*           d3.select("#linkdist2")
@@ -261,6 +249,20 @@
                             timeSel= ""+$("#timeslider").slider("value");
                             update(EstLib.getDataObj(data, geoSel, timeSel));
                         });
+                        
+                        //build menu for the choice of graphs
+                        var typeList = $(""#typeList);
+                        // build option group for the shares
+                        var optgroupSh = $("<optgroup>").attr("label","Shares of equivalized income held by...").appendTo(typeList);
+                        $("<option>").attr("label","deciles/percentiles (as accurate as possible)").attr("value","1").appendTo(optgroupSh);
+                        $("<option>").attr("label","deciles of eq. income").attr("value","2").appendTo(optgroupSh);
+                        
+                        $('#typeList option[value="deciles/percentiles (as accurate as possible)"]').attr('selected','selected');
+                        typeList
+                        	.selectmenu({change:function(){
+                        		typeSel=typeList.find(":selected").attr("value");
+                        	},width:"auto"})
+                        	.selectmenu("menuWidget").css("height","200px");
 
                         //update the chart
                         var update = function(dataObj){
