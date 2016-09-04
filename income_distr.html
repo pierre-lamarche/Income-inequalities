@@ -86,8 +86,11 @@
 <body>
 <h1>
     <span id="title1"></span> - <span id="geoTitle">-</span> <span
-        id="title2"></span> <span id="timeTitle">-</span>
+        id="title2"></span> <span id="timeTitle">-</span>      
 </h1>
+<div style="float: right;" id="lgDiv">
+	<select name="lg" id="lgList"></select>
+</div>
 <div style="float: left; width: 350px; margin-left: 10px; margin-right: 10px;">
     <span id="countryText"></span>
     <div id="geoListDiv">
@@ -128,6 +131,12 @@
 
             //get language
             var lg = EstLib.getLang2Chars();
+          	//build menu for the choice of language
+            var lgList = $("#lgList");
+            // build option group for the shares
+            $("<option>").attr("value","EN").text("English").appendTo(lgList);
+            $("<option>").attr("value","FR").text("Français").appendTo(lgList);
+            $("<option>").attr("value","DE").text("Deutsch").appendTo(lgList);
 
             //select dictionnary
             var dict = EstLib.dictIncomeDistr;
@@ -258,6 +267,12 @@
                         var optgroupSh = $("<optgroup>").attr("label","Shares of equivalized income held by...").appendTo(typeList);
                         $("<option>").attr("value","1").text("deciles/percentiles (as accurate as possible)").appendTo(optgroupSh);
                         $("<option>").attr("value","2").text("deciles of eq. income").appendTo(optgroupSh);
+                        $("<option>").attr("value","3").text("quartiles of eq. income").appendTo(optgroupSh);
+                        $("<option>").attr("value","4").text("quintiles of eq. income").appendTo(optgroupSh);
+                        
+                        var optgroupLz = $("<optgroup>").attr("label","Approximation of Lorenz curve").appendTo(typeList);
+                        $("<option>").attr("value","5").text("as accurate as possible").appendTo(optgroupLz);
+                        $("<option>").attr("value","5").text("through deciles").appendTo(optgroupLz);
                         
                         $('#typeList option[value="1"]').attr('selected','selected');
                         typeList
