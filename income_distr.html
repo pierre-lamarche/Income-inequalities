@@ -96,10 +96,12 @@
     <div style="margin-top: 8px;">
         <span id="yearText"></span>
         <div id="timeslider"></div>
-    </div>
-    <span id="typeChart"></span>
-    <div id=typeListDiv>
-    	<select name="typeN" id="typeList" </select>
+    </div> 
+    <div style="margin-top: 16px;">
+    	<span id="typeChart"></span>
+    	<div id=typeListDiv>
+    		<select name="typeN" id="typeList"></select>
+    	</div>
     </div>
     <div id="info" style="width: 350px; margin-top: 25px;">
     </div>
@@ -254,10 +256,10 @@
                         var typeList = $("#typeList");
                         // build option group for the shares
                         var optgroupSh = $("<optgroup>").attr("label","Shares of equivalized income held by...").appendTo(typeList);
-                        $("<option>").attr("label","deciles/percentiles (as accurate as possible)").attr("value","1").appendTo(optgroupSh);
-                        $("<option>").attr("label","deciles of eq. income").attr("value","2").appendTo(optgroupSh);
+                        $("<option>").attr("value","1").text("deciles/percentiles (as accurate as possible)").appendTo(optgroupSh);
+                        $("<option>").attr("value","2").text("deciles of eq. income").appendTo(optgroupSh);
                         
-                        $('#typeList option[value="deciles/percentiles (as accurate as possible)"]').attr('selected','selected');
+                        $('#typeList option[value="1"]').attr('selected','selected');
                         typeList
                         	.selectmenu({change:function(){
                         		typeSel=typeList.find(":selected").attr("value");
